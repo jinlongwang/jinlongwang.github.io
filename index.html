@@ -1,8 +1,165 @@
+## -*- coding: utf-8 -*-
 <!DOCTYPE html>
 <html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="apple-mobile-web-app-title" content="郁金香运动"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <script type="text/javascript" src="${STATIC_URL}js/vendor/zepto.min.js"></script>
+    <title>1111</title>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-position: center;
+        }
+
+        .item1{
+            background: #f0ad4e;
+        }
+
+        .item2{
+            background: #006600;
+        }
+
+        .item3{
+            background: #204d74;
+        }
+
+        .background{
+            background-repeat: no-repeat;
+            background-image: url('http://static.bootcss.com/expo/img/d/dd/2de797545de56274f03a5920eb3a1.jpg');
+            background-size: cover;
+            padding: 138px 0;
+            width: 100%;
+        }
+
+        .wrap1 {
+                margin: 100px;
+                overflow: hidden;
+                position: relative;
+                height: 60%;
+                text-align: center;
+            }
+
+        .wrap1 p {
+            font-size: 30px;
+            color: #6F6F6F;
+        }
+
+        .box {
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        img {
+            width: 200px;
+            margin: 0px auto;
+            position: relative;
+        }
+        img {
+            max-width: 100%;
+        }
+    </style>
+
+    <script>
+        function touchStart(event) {
+            if (dragStart !== null) return;
+
+            if (event.touches) {
+                event = event.touches[0];
+            }
+             //抓取时的所在位置
+            dragStart = event.clientY;
+         }
+
+        function touchMove (event) {
+
+            if (dragStart === null) return;
+
+            if (event.touches) {
+                event = event.touches[0];
+            }
+             //得到抓取开始时于进行中的差值的百分比
+            percentage = (dragStart - event.clientY) / window.screen.height;//和屏幕高度做比较
+
+            if (percentage > 0) {
+                // //向上拖动
+                var translateY = 1 - 0.4*percentage;//位置系数，可以微调
+                $(event.target).next().css('-webkit-transform', 'translateY('+translateY*100+'%)'); //下一个item上移动
+
+            } else {
+                //向下拖动
+                var translateY = -(0.4*percentage);
+                $(event.target).css('-webkit-transform', 'translateY('+translateY*100+'%)');//当前item下移动
+            }
+
+         }
+
+        function touchEnd (event) {
+
+            dragStart = null;//标志位值空
+
+
+            //抓取停止后，根据临界值做相应判断
+            if (percentage >= dragThreshold) {//向下滚动
+                $(event.target).css('-webkit-transform', 'translateY(-100%)');
+                $(event.target).next().css('-webkit-transform', 'translateY(0)');
+            } else if ( Math.abs(percentage) >= dragThreshold ) {//向上滚动
+                $(event.target).css('-webkit-transform', 'translateY(100%)');
+            } else {//没有达到临界值 恢复原样
+                $(event.target).next().css('-webkit-transform', 'translateY(100%)');
+            }
+             //重置percentage
+            percentage = 0;
+
+         }
+    </script>
+</head>
 <body>
-  <div style="background-repeat: no-repeat;
-    background-image: url('http://static.bootcss.com/expo/img/d/dd/2de797545de56274f03a5920eb3a1.jpg');">
+ <!--<div class="item item1">
+
   </div>
+  <div class="item item2">
+
+  </div>
+  <div class="item item3">
+
+  </div>
+    <div style="width:100%;">
+
+    </div>-->
+    <div class="wrapper">
+        <div class="background">
+            <div class="" style="text-align: center;width: 1000px;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
+                <h1 style="color: white;">jinlong wang's page</h1>
+            </div>
+        </div>
+        <div class="wrap1" id="skills">
+                <p>My skills</p>
+        </div>
+        <div class="wrap1">
+            <div class="box">
+                    <img class="img-hidden" id="img-6" src="http://hackerxu.com/img/about/python.png" alt="" style="top: 0px; opacity: 1;">
+                    <img class="img-hidden" id="img-8" src="http://hackerxu.com/img/about/shell.png" alt="" style="top: 0px; opacity: 1;">
+                    <img class="img-hidden" id="img-9" src="http://hackerxu.com/img/about/html5.png" alt="" style="top: 0px; opacity: 1;">
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
