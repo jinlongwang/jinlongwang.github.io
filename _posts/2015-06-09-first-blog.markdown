@@ -13,3 +13,17 @@ header-img: "img/post-bg-01.jpg"
   把所有看到的，学到的都动手搞一把，加强自己的动手的能力。所以逼着自己把github
   和这个blog用起来，我相信一段时间之后，自己一定会有更快的提高！</p>
 <p>ps:可能最近工作要变动，希望一切都顺利！</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
