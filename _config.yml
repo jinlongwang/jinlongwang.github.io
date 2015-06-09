@@ -1,13 +1,13 @@
 # Site settings
-title: Clean Blog
+title: jinlongwang's blog
 header-img: img/home-bg.jpg
-email: your-email@yourdomain.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
-baseurl: "/startbootstrap-clean-blog-jekyll"
-url: "http://yourdomain.com"
-twitter_username: SBootstrap
-github_username:  davidtmiller
-facebook_username:  IronSummitMedia
+email: superrz@126.com
+description: "stay simlpe stay foolish"
+baseurl: "/"
+url: "http://jinlongwang.github.io"
+twitter_username: jinlongwang
+github_username:  jinlongwang
+facebook_username:  jinlongwang
 
 # Build settings
 markdown: kramdown
