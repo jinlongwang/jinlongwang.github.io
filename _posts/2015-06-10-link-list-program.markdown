@@ -6,8 +6,9 @@ author:     "jinlongwang"
 header-img: "img/post-bg-02.jpg"
 tag: "算法"
 ---
-###二叉树结构
-```python
-def abc():
-    pass
-```
+####python的二叉树结构
+    class Tree(object):
+      def __init__(self, data=None, left=None, right=None):
+          self.data = data
+          self.left = left
+          self.right = right
