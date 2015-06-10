@@ -1,11 +1,11 @@
 ---
 layout:     post
-title:      "关于一些链表的算法题目"
+title:      "关于二叉树的算法题目"
 date:       2015-06-10 22:55:00
 author:     "jinlongwang"
 header-img: "img/post-bg-02.jpg"
 tag: "算法"
 ---
-##链表结构
+##二叉树结构
 ```python
     jfkdlasjflkdsa
