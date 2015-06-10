@@ -18,3 +18,9 @@ tag: "算法"
 
     if __name__ == "__main__":
         root = Tree("A",Tree("B", Tree("D"),Tree("E")), Tree("C", Tree("F"), Tree("G")))
+
+```python
+class a:
+  pass
+
+```
