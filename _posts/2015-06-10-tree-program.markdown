@@ -14,4 +14,4 @@ tag: "算法"
           self.right = right
 
 ####构造一棵二叉树
-![image](img/btree.png)
+![image](/img/btree.png)
