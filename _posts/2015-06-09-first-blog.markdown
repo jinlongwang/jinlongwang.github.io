@@ -4,6 +4,7 @@ title:      "新博客的第一篇文章"
 date:       2015-06-09 22:50:00
 author:     "jinlongwang"
 header-img: "img/post-bg-01.jpg"
+tag: "生活"
 ---
 <p>这是搭建的github博客，以后将在这里记录关于技术的东西。</p>
 <p>其实一直想养成自己写技术博客的习惯，之前用过博客园和csdn，但是都没有坚持下来，
