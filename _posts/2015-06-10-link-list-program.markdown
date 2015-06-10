@@ -7,7 +7,7 @@ header-img: "img/post-bg-02.jpg"
 tag: "算法"
 ---
 ###二叉树结构
-    ```python
-    def abc():
-        pass
-    ```
+```python
+def abc():
+    pass
+```
