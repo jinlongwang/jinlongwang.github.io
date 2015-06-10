@@ -14,10 +14,7 @@ header-img: "img/post-bg-01.jpg"
   和这个blog用起来，我相信一段时间之后，自己一定会有更快的提高！</p>
 <p>ps:可能最近工作要变动，希望一切都顺利！</p>
 
-<!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="2015-06-09 22:50:00" data-title="新博客的第一篇文章" data-url="https://jinlongwang.github.io/2015/06/09/first-blog/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"jinlongwang"};
 	(function() {
@@ -29,4 +26,3 @@ var duoshuoQuery = {short_name:"jinlongwang"};
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
 	</script>
-<!-- 多说公共JS代码 end -->
