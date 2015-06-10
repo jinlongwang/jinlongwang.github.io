@@ -14,19 +14,16 @@ header-img: "img/post-bg-01.jpg"
   和这个blog用起来，我相信一段时间之后，自己一定会有更快的提高！</p>
 <p>ps:可能最近工作要变动，希望一切都顺利！</p>
 
-<!-- 多说评论框 start -->
-<div class="ds-thread" data-thread-key="2015-06-09 22:50:00" data-title="新博客的第一篇文章" data-url="https://jinlongwang.github.io/2015/06/09/first-blog/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<div id="disqus_thread"></div>
 <script type="text/javascript">
-var duoshuoQuery = {short_name:"jinlongwang"};
-(function() {
-var ds = document.createElement('script');
-ds.type = 'text/javascript';ds.async = true;
-ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-ds.charset = 'UTF-8';
-(document.getElementsByTagName('head')[0]||
-document.getElementsByTagName('body')[0]).appendChild(ds);
-})();
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
 </script>
-<!-- 多说公共JS代码 end -->
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>:
