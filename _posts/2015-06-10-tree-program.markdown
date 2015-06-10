@@ -12,3 +12,6 @@ tag: "算法"
           self.data = data
           self.left = left
           self.right = right
+
+####构造一棵二叉树
+![image](img/btree.png)
