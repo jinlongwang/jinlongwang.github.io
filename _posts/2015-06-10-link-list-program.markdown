@@ -6,6 +6,6 @@ author:     "jinlongwang"
 header-img: "img/post-bg-02.jpg"
 tag: "算法"
 ---
-##二叉树结构
-```python
-    jfkdlasjflkdsa
+###二叉树结构
+    def abc():
+        pass
