@@ -16,11 +16,32 @@ tag: "算法"
 ####构造一棵二叉树
 ![image](/img/btree.png)
 
+    def preTraverse(root):
+      if root == None:
+          return
+      print root.data
+      preTraverse(root.left)
+      preTraverse(root.right)
+
+    def middleTraverse(root):
+      if root == None:
+          return
+      middleTraverse(root.left)
+      print root.data
+      middleTraverse(root.right)
+
+    def afterTraverse(root):
+      if root == None:
+          return
+      afterTraverse(root.left)
+      afterTraverse(root.right)
+      print root.data
+
     if __name__ == "__main__":
-        root = Tree("A",Tree("B", Tree("D"),Tree("E")), Tree("C", Tree("F"), Tree("G")))
-
-```python
-class a:
-  pass
-
-```
+      root = Tree("A",Tree("B", Tree("D"),Tree("E")), Tree("C", Tree("F"), Tree("G")))
+      print '-------pre--------'
+      preTraverse(root)
+      print '-------middle-----'
+      middleTraverse(root)
+      print '-------end--------'
+      afterTraverse(root)
