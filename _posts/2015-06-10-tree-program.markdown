@@ -15,3 +15,6 @@ tag: "算法"
 
 ####构造一棵二叉树
 ![image](/img/btree.png)
+
+    if __name__ == "__main__":
+        root = Tree("A",Tree("B", Tree("D"),Tree("E")), Tree("C", Tree("F"), Tree("G")))
