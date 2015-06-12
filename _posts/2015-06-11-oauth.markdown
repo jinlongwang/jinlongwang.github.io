@@ -10,3 +10,19 @@ tag: "算法"
 * [撰写合格的REST API](http://zhuanlan.zhihu.com/prattle/20034107)
 * [Implementing a Python OAuth 2.0 Provider](http://tech.shift.com/post/39516330935/implementing-a-python-oauth-2-0-provider-part-1)
 * [理解HTTP幂等性](http://www.cnblogs.com/weidagang2046/archive/2011/06/04/idempotence.html)
+
+
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
