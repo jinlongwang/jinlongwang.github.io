@@ -16,6 +16,7 @@ tag: "算法"
   通过阅读这个库的源码，学会了python也可以实现类似java的
   抽象类
   example：
+
       class Interface(object):
         def __init__(self):
             pass
