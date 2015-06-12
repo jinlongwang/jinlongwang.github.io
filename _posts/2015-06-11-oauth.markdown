@@ -6,4 +6,7 @@ author:     "jinlongwang"
 header-img: "img/post-bg-03.jpg"
 tag: "算法"
 ---
-挖个坑,明天填
+####参考文章
+* [撰写合格的REST API](http://zhuanlan.zhihu.com/prattle/20034107)
+* [Implementing a Python OAuth 2.0 Provider](http://tech.shift.com/post/39516330935/implementing-a-python-oauth-2-0-provider-part-1)
+* [理解HTTP幂等性](http://www.cnblogs.com/weidagang2046/archive/2011/06/04/idempotence.html)
