@@ -37,7 +37,8 @@ tag: "算法"
 
 * 做到使用标准的RESTful接口
 
-####Oauth的安全型设计和接口的验证设计  
+####Oauth的安全型设计和接口的验证设计
+TO BE CONTINUE...  
 
 
 <div id="disqus_thread"></div>
