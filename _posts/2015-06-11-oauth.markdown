@@ -11,6 +11,33 @@ tag: "算法"
 * [Implementing a Python OAuth 2.0 Provider](http://tech.shift.com/post/39516330935/implementing-a-python-oauth-2-0-provider-part-1)
 * [理解HTTP幂等性](http://www.cnblogs.com/weidagang2046/archive/2011/06/04/idempotence.html)
 
+####整体架构
+* 整体使用pyoauth2 这个库，具体使用方法见参考文章2.
+  通过阅读这个库的源码，学会了python也可以实现类似java的
+  抽象类
+  example：
+      class Interface(object):
+        def __init__(self):
+            pass
+
+        def toImpl(self):
+            raise NotImplementedError("must has a sub class")
+
+      class Sub(Interface):
+        def toImpl(self):
+            print 'impl ok!'
+
+      if __name__ == "__main__":
+        b = Sub()
+        b.toImpl()
+
+* 需要持久化4张数据表，参考文章中使用了redis，但是我认为在实践中这些数据
+  还是需要持久化的数据库中的。
+  ![image](/img/table.png)
+
+* 做到使用标准的RESTful接口
+
+####Oauth的安全型设计和接口的验证设计  
 
 
 <div id="disqus_thread"></div>
