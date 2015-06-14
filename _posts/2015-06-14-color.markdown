@@ -8,3 +8,22 @@ tag: "算法"
 ---
 事情是这样，当我看到[悦跑圈分享链接](http://wap.thejoyrun.com/po_827117_4565880.html)时，地图中路线根据速度改变画线的颜色时，顿时眼前一亮。
 ![Image](/img/share.png)
+
+其实想一下这个算法还是比较清晰的，只需根据不同的速度来调整RGB的值即可。
+
+    function Color(Speed) {
+        var result = "rgb(0,0,0)", difference;
+        if (Speed < AMinSpeed) { result = "rgb(255,0,0)"; }
+        if (AMinSpeed<=Speed && Speed <=AverSpeed) {
+            difference = parseInt(255 - (AverSpeed - Speed) / (AverSpeed - AMinSpeed) * 255);
+            result = "rgb(255," + difference + ",0)";
+        };
+        if (Speed > AMaxSpeed) { result = "rgb(0,255,0)"; };
+        if (AverSpeed<=Speed && Speed <=AMaxSpeed) {
+            difference = parseInt(255 - (Speed - AverSpeed) / (AMaxSpeed - AverSpeed) * 255);
+            result = "rgb(" + difference + ",255,0)";
+        };
+        return result;
+    };
+
+悦跑圈的脚本代码没有任何混淆。
