@@ -3,6 +3,8 @@ layout:     post
 title:      "按数据比例改变颜色的算法"
 date:       2015-06-14 22:56:00
 author:     "jinlongwang"
-header-img: "img/post-bg-03.jpg"
+header-img: "img/post-bg-05.jpg"
 tag: "算法"
 ---
+事情是这样，当我看到[悦跑圈分享链接](http://wap.thejoyrun.com/po_827117_4565880.html)时，地图中路线根据速度改变画线的颜色时，顿时眼前一亮。
+![Image](/img/share.png)
