@@ -27,15 +27,16 @@ tag: "算法"
     };
 
 大概总结公式就是：
-    avg = 平均值
-    max = 最大值
-    min = 最小值
-    c = 常数
-    x = 当前变量
-    if x > avg:
-      res = c-(x-avg)/(max-avg)*c
-    if x < avg:
-      res = c-(avg-x)/(avg-min)*c
+
+      avg = 平均值
+      max = 最大值
+      min = 最小值
+      c = 常数
+      x = 当前变量
+      if x > avg:
+        res = c-(x-avg)/(max-avg)*c
+      if x < avg:
+        res = c-(avg-x)/(avg-min)*c
 
 
 这个公式似曾相识，可惜我数学已经还给了老师。
