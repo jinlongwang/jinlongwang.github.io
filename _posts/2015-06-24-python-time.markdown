@@ -6,3 +6,5 @@ author:     "jinlongwang"
 header-img: "img/post-bg-05.jpg"
 tag: "python"
 ---
+###参考文章
+  * [datetime<->timestamp](http://blog.jmoz.co.uk/python-convert-datetime-to-timestamp/)
