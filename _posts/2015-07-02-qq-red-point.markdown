@@ -11,24 +11,29 @@ tag: "canvas html5 贝塞尔曲线"
 * [手机 QQ 的一键消除红点功能是怎么想出来的？](http://www.zhihu.com/question/26382740)
 
 ##思路
+
 ####静态实现
   ![image](/img/qq.png)
   按照参考文章1中所述， 准备使用canvas实现。
   画两个圆加上两条贝塞尔曲线，来实现图中效果。
 #####两个圆形
+
   canvas画圆形:
 
       context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+
+
   1. x: 圆的中心的 x 坐标。
-  * y: 圆的中心的 y 坐标。
-  * r: 圆的半径。
-  * sAngle:起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。
-  * eAngle:结束角，以弧度计。
+  2. y: 圆的中心的 y 坐标。
+  3. r: 圆的半径。
+  4. sAngle:起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。
+  5. eAngle:结束角，以弧度计。
   * counterclockwise: 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
 
   ![image](/img/arc.png)
 
-#####两个圆形
+#####弧线
+
   画贝塞尔曲线：
 
       context.quadraticCurveTo(cpx,cpy,x,y);
@@ -39,6 +44,7 @@ tag: "canvas html5 贝塞尔曲线"
   3.  结束点
 
 #####坑
+
   遇到的最大的坑没想到居然是如何填充画完之后的图。
   最后的解决办法，一定要保证起始点和结束点重合，这样，
   closepath之后，在fill()就能出现我想要的！
