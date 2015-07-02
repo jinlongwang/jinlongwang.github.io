@@ -30,7 +30,7 @@ tag: "canvas html5 贝塞尔曲线"
   3. r: 圆的半径。
   4. sAngle:起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。
   5. eAngle:结束角，以弧度计。
-  * counterclockwise: 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
+  6. counterclockwise: 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。
 
   ![image](/img/arc.png)
 
