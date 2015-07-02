@@ -3,7 +3,7 @@ layout:     post
 title:      "'一键下班' or '水滴下拉刷新'？"
 date:       2015-07-03 00:02:00
 author:     "jinlongwang"
-header-img: "img/post-bg-07.jpg"
+header-img: "img/post-bg-01.jpg"
 tag: "canvas html5 贝塞尔曲线"
 ---
 ##参考文章
@@ -13,9 +13,11 @@ tag: "canvas html5 贝塞尔曲线"
 ##思路
 
 ####静态实现
+
   ![image](/img/qq.png)
   按照参考文章1中所述， 准备使用canvas实现。
   画两个圆加上两条贝塞尔曲线，来实现图中效果。
+
 #####两个圆形
 
   canvas画圆形:
