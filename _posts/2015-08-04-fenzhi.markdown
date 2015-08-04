@@ -1,0 +1,56 @@
+---
+layout:     post
+title:      "分治法"
+date:       2015-08-04 10:30:00
+author:     "jinlongwang"
+header-img: "img/post-bg-04.jpg"
+tag: "算法"
+---
+昨天做leetcode的一道题，用到了分治法。感觉和快速排序一个
+意思，把这两个题目放在一起看一下。
+
+只要在了解一下递归的执行逻辑。
+
+Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.
+
+
+Example 1
+Input: "2-1-1".
+
+((2-1)-1) = 0
+(2-(1-1)) = 2
+Output: [0, 2]
+
+
+Example 2
+Input: "2*3-4*5"
+
+(2*(3-(4*5))) = -34
+((2*3)-(4*5)) = -14
+((2*(3-4))*5) = -10
+(2*((3-4)*5)) = -10
+(((2*3)-4)*5) = 10
+Output: [-34, -14, -10, -10, 10]
+
+解法:
+
+    class Solution:
+    # @param {string} input
+    # @return {integer[]}
+    def diffWaysToCompute(self, input):
+      res = []
+      for i,val in enumerate(input):
+          if val=="*" or val == "-" or val == "+":
+              left = self.diffWaysToCompute(input[0:i])
+              right = self.diffWaysToCompute(input[i+1:])
+              for j, jv in enumerate(left):
+                  for k, kv in enumerate(right):
+                      if val == "+":
+                          res.append(jv+kv)
+                      if val == "-":
+                          res.append(jv-kv)
+                      if val == "*":
+                          res.append(jv*kv)
+      if not res:
+          res.append(int(input))
+      return res
