@@ -1,16 +1,16 @@
 ---
 
 layout:     post
-title:      "分治法"
+title:      "一些管理后台页面"
 date:       2015-11-03 07:42:00
 author:     "jinlongwang"
 header-img: "img/post-bg-05.jpg"
 
 ---
 
-# 一些管理后台页面
+### 一些管理后台页面
 
-### 有赞商城
+1. 有赞商城
 
 ![image](/img/yz1.png)
 
@@ -18,6 +18,6 @@ header-img: "img/post-bg-05.jpg"
 
 ![image](/img/yz3.png)
 
-### 微信公众平台
+2. 微信公众平台
 
 
