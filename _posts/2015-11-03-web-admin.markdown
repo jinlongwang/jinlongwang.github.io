@@ -1,0 +1,23 @@
+---
+
+layout:     post
+title:      "分治法"
+date:       2015-11-03 07:42:00
+author:     "jinlongwang"
+header-img: "img/post-bg-05.jpg"
+
+---
+
+# 一些管理后台页面
+
+### 有赞商城
+
+![image](/img/yz1.png)
+
+![image](/img/yz2.png)
+
+![image](/img/yz3.png)
+
+### 微信公众平台
+
+
