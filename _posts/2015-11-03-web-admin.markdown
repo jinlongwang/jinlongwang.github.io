@@ -27,4 +27,28 @@ header-img: "img/post-bg-05.jpg"
 
 * 微信公众平台
 
+![image](/img/wx/wx1.png)
+
+![image](/img/wx/wx2.png)
+
+![image](/img/wx/wx3.png)
+
+![image](/img/wx/wx4.png)
+
+![image](/img/wx/wx5.png)
+
+![image](/img/wx/wx6.png)
+
+![image](/img/wx/wx7.png)
+
+![image](/img/wx/wx8.png)
+
+![image](/img/wx/wx9.png)
+
+![image](/img/wx/wx10.png)
+
+![image](/img/wx/wx11.png)
+
+
+
 
