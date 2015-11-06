@@ -1,0 +1,116 @@
+---
+
+layout:     post
+title:      "自动化运维工具saltstack[一]"
+date:       2015-11-06 07:42:00
+author:     "jinlongwang"
+header-img: "img/post-bg-05.jpg"
+
+---
+
+# 自动化运维工具saltstack[一]
+
+今年的工作已经转向了运维开发， 这是一个全新的领域，也是一个对自己的心得挑战。之前都是东搞西搞，一直也没有专注过某一块东西，总感觉这个下去对自己并不有利。希望通过1-2年时间，在这个运维开发的领域能够沉淀一些自己东西。处理自己工作的时间， 空余时间也要多研究一些之前没有接触过的东西
+
+## saltstack简介
+
+`saltstack`是一个自动化运维工具， [文档见这里](https://docs.saltstack.com)或者见[中文文档](http://docs.saltstack.cn/zh_CN/latest/topics/installation/index.html#quick-install)。
+
+对我来说为什么选择学习`saltstack`？
+ 
+- `saltstack`是一个比较先进的自动化运维工具，要比puppet,chef等工具晚出来，觉得以后肯定要比puppet等使用更加广泛。同样的工具还有`ansible`，如果以后有可能我也要看一下。
+
+- `saltstack` 使用python语言编写， 自己本身对python比较熟悉，而且也是从工作以来一直使用的语言。以后研究 salt源码或是拓展第三方模块的时候应该会更顺手
+
+
+## saltstack起步
+
+### 环境介绍
+
+- master使用自己的mac
+
+- minion使用一台测试服务器centos
+
+### 安装
+
+####master
+
+python， pip这些都很熟悉了，直接就可以安装好。在我mac上安装的时候没有遇到问题，如果有根据报错google一下，应该没什么问题
+		
+	pip install salt
+
+安装完成之后需要在 `/etc/salt/` 下新建一个 `master` 文件
+并把[配置文件](https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master)copy进来
+
+之后
+	
+	sudo salt-master --log-level=all
+	
+成功启动master
+
+![image](/img/salt/start_master.png)
+
+####mininon
+
+`minion`在centos上, 使用yum安装， 需要先添加epel源
+	
+	wget -c http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+	rpm -ivh epel-release-6-8.noarch.rpm
+	
+然后直接yum安装
+  
+  	yum -y install salt-minion
+  	
+接着在`vim /etc/salt/minion`编辑配置文件，暂时先打开
+
+	master: 10.0.2.2
+	id: 'minion1'
+	file_client: remote
+	
+这三项配置。`master` 指向mac的IP
+
+	/etc/init.d/salt-minion start
+	
+成功启动`minion`
+
+![iamge](/img/salt/start_minion.png)	
+
+
+####授信minion
+	
+	sudo salt-key -a minion1
+	
+	sudo salt-key -L
+	
+
+![image](/img/salt/trust.png)
+	
+####测试是否联通
+
+在master上执行
+	
+	sudo salt '*' test.ping
+	
+显示
+	
+![image](/img/salt/success.png)
+
+表示联通
+
+###后记
+
+万里长征第一步， 已经把环境搭好， 然后一点点吃透！
+
+
+
+
+
+
+
+
+
+
+	
+
+		
+
