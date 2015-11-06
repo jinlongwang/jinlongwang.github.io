@@ -101,6 +101,17 @@ python， pip这些都很熟悉了，直接就可以安装好。在我mac上安�
 
 万里长征第一步， 已经把环境搭好， 然后一点点吃透！
 
+###参考
+
+[http://warcraft3.blog.51cto.com/6514883/1362831](http://warcraft3.blog.51cto.com/6514883/1362831)
+
+[https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html](https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html)
+
+[https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master](https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master)
+
+[http://rfyiamcool.blog.51cto.com/1030776/1262537](http://rfyiamcool.blog.51cto.com/1030776/1262537)
+
+
 
 
 
