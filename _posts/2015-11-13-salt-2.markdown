@@ -1,0 +1,44 @@
+---
+
+layout:     post
+title:      "自动化运维工具saltstack[一]"
+date:       2015-11-13 07:42:00
+author:     "jinlongwang"
+header-img: "img/post-bg-05.jpg"
+
+---
+
+# 自动化运维工具saltstack[二]
+
+## 基本配置
+
+### 建立state树
+	
+* 所谓state只是salt的一种概念，用来保存各种配置yaml的文件。
+
+* 在Salt中启动一个中心state系统，需要首先确保已经建立了Salt文件服务. 编辑master配置文件(file_roots) 取消如下行的注释
+	
+		file_roots:
+	  		base:
+	    		- /srv/salt
+
+
+* 创建/srv/salt文件夹， 在里面创建`top.sls` 写入
+		
+		base:
+		    '*':
+		     - webserver
+
+* 在同一位置穿件`webserver.sls` 写入
+
+		redis:
+		    pkg:
+		     - installed
+	
+   这里我们仅仅测试一个简单的安装redis命令
+   
+* 执行 `sudo salt '*' state.highstate`	
+  这个命令相当于把配置推到minion上去！
+  
+		
+
