@@ -1,7 +1,7 @@
 ---
 
 layout:     post
-title:      "自动化运维工具saltstack[一]"
+title:      "自动化运维工具saltstack[二]"
 date:       2015-11-13 07:42:00
 author:     "jinlongwang"
 header-img: "img/post-bg-05.jpg"
@@ -39,6 +39,6 @@ header-img: "img/post-bg-05.jpg"
    
 * 执行 `sudo salt '*' state.highstate`	
   这个命令相当于把配置推到minion上去！
-  
+ 
 		
 
