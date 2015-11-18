@@ -1,0 +1,47 @@
+---
+
+layout:     post
+title:      "通过vagrant构建开发环境"
+date:       2015-11-18 11:17:00
+author:     "jinlongwang"
+header-img: "img/post-bg-04.jpg"
+
+---
+
+# 通过vagrant构建开发环境
+
+之前学习`saltstack`时，minion端实在服务器上，没有在自己的本机。使用起来非常不爽，如果想测试两台的情况就傻逼了。同事推荐了`vagrant`
+马上用了起来，很快就搭建起了个虚拟环境并把salt安装了上去。爽歪歪。
+
+## vagrant
+
+Vagrant 是一款用来构建虚拟开发环境的工具。
+
+我的开始的理解认为和docker类似。但实际用上才知道要比docker重，封装的是VirtualBox的虚拟机。
+
+### 安装
+
+1. 安装VirtualBox
+2. 安装 Vagrant
+3. 选择下载自己的镜像（我用的是网上找的centos6.4）
+4. 添加自己的镜像到	 Vagrant
+5. 启动 Vagrant
+
+简单几步， 一个虚拟环境就搞定了。
+
+### 问题
+
+* Vagrantfile的理解（文档还没有细看）
+* 在虚拟环境中，如何连接宿主机? (现在我直接把宿主机局域网ip写入minion，没有问题)
+
+### 后记
+
+这样，用自己的mac就完全能模拟`saltstack`环境
+
+下一步要加快对salt的学习了。一些基本的概念在脑中已经有了理解，需要仔细看文档并实践掌握
+
+## 参考
+
+[使用 Vagrant 打造跨平台开发环境](http://segmentfault.com/a/1190000000264347)
+[https://docs.vagrantup.com/v2/getting-started/boxes.html](https://docs.vagrantup.com/v2/getting-started/boxes.html)
+
