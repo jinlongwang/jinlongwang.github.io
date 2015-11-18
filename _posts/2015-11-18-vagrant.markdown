@@ -42,7 +42,7 @@ Vagrant 是一款用来构建虚拟开发环境的工具。
 
 ## 参考
 
-[使用 Vagrant 打造跨平台开发环境](http://segmentfault.com/a/1190000000264347)
+* [使用 Vagrant 打造跨平台开发环境](http://segmentfault.com/a/1190000000264347)
 
-[https://docs.vagrantup.com/v2/getting-started/boxes.html](https://docs.vagrantup.com/v2/getting-started/boxes.html)
+* [https://docs.vagrantup.com/v2/getting-started/boxes.html](https://docs.vagrantup.com/v2/getting-started/boxes.html)
 
