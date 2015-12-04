@@ -1,0 +1,15 @@
+---
+
+layout:     post
+title:      "JS组件化开发"
+date:       2015-12-04 11:17:00
+author:     "jinlongwang"
+header-img: "img/post-bg-03.jpg"
+
+---
+
+# JS 组件化开发
+
+转载一篇写的非常好的组件化开发
+
+[http://purplebamboo.github.io/2015/03/16/javascript-component/](http://purplebamboo.github.io/2015/03/16/javascript-component/)
