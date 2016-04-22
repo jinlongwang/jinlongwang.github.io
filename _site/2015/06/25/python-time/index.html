@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>python中的时间操作 - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/06/25/python-time/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,80 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-05.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>python中的时间操作</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on June 25, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<p>###参考文章
+  * <a href="http://blog.jmoz.co.uk/python-convert-datetime-to-timestamp/">datetime&lt;-&gt;timestamp</a></p>
+
+<pre><code>一.time模块     time模块提供各种操作时间的函数     一般有两种表示时间的方式:     第一种: 是时间戳的方式(相对于1970.1.1 00:00:00以秒计算的偏移量),时间戳是惟一的     第二种: 以数组的形式表示即(struct_time),共有九个元素，分别表示，同一个时间戳的struct_time会因为时区不同而不同  
+</code></pre>
+
+<p>二.datetime模块<br />
+  Python提供了多个内置模块用于操作日期时间，像calendar，time，datetime。time模块。<br />
+  相比于time模块，datetime模块的接口则更直观、更容易调用。<br />
+  datetime模块定义了下面这几个类：<br />
+  datetime.date：表示日期的类。常用的属性有year, month, day；<br />
+  datetime.time：表示时间的类。常用的属性有hour, minute, second, microsecond；<br />
+  datetime.datetime：表示日期时间。<br />
+  datetime.timedelta：表示时间间隔，即两个时间点之间的长度。<br />
+  datetime.tzinfo：与时区有关的相关信息。<br />
+  datetime中，表示日期时间的是一个datetime对象<br />
+  datetime中提供了strftime方法，可以将一个datetime型日期转换成字符串：</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/06/15/flip-tree/" data-toggle="tooltip" data-placement="top" title="凑个热闹，翻转二叉树">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/06/25/http/" data-toggle="tooltip" data-placement="top" title="我理解的HTTP">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

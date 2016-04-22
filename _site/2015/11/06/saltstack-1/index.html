@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="stay simlpe stay foolish">
+
+    <title>自动化运维工具saltstack[一] - jinlongwang</title>
+
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/11/06/saltstack-1/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/clean-blog.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<body>
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">jinlongwang</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">首页</a>
+                </li>
+                
+                <li>
+                    <a href="/about/">关于</a>
+                </li>
+                
+                <li>
+                    <a href="/contact/">联系</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-05.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>自动化运维工具saltstack[一]</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on November 6, 2015</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+				<h1 id="saltstack">自动化运维工具saltstack[一]</h1>
+
+<p>今年的工作已经转向了运维开发， 这是一个全新的领域，也是一个对自己的心得挑战。之前都是东搞西搞，一直也没有专注过某一块东西，总感觉这个下去对自己并不有利。希望通过1-2年时间，在这个运维开发的领域能够沉淀一些自己东西。处理自己工作的时间， 空余时间也要多研究一些之前没有接触过的东西</p>
+
+<h2 id="saltstack-1">saltstack简介</h2>
+
+<p><code>saltstack</code>是一个自动化运维工具， <a href="https://docs.saltstack.com">文档见这里</a>或者见<a href="http://docs.saltstack.cn/zh_CN/latest/topics/installation/index.html#quick-install">中文文档</a>。</p>
+
+<p>对我来说为什么选择学习<code>saltstack</code>？</p>
+
+<ul>
+  <li>
+    <p><code>saltstack</code>是一个比较先进的自动化运维工具，要比puppet,chef等工具晚出来，觉得以后肯定要比puppet等使用更加广泛。同样的工具还有<code>ansible</code>，如果以后有可能我也要看一下。</p>
+  </li>
+  <li>
+    <p><code>saltstack</code> 使用python语言编写， 自己本身对python比较熟悉，而且也是从工作以来一直使用的语言。以后研究 salt源码或是拓展第三方模块的时候应该会更顺手</p>
+  </li>
+</ul>
+
+<h2 id="saltstack-2">saltstack起步</h2>
+
+<h3 id="section">环境介绍</h3>
+
+<ul>
+  <li>
+    <p>master使用自己的mac</p>
+  </li>
+  <li>
+    <p>minion使用一台测试服务器centos</p>
+  </li>
+</ul>
+
+<h3 id="section-1">安装</h3>
+
+<p>####master</p>
+
+<p>python， pip这些都很熟悉了，直接就可以安装好。在我mac上安装的时候没有遇到问题，如果有根据报错google一下，应该没什么问题</p>
+
+<pre><code>pip install salt
+</code></pre>
+
+<p>安装完成之后需要在 <code>/etc/salt/</code> 下新建一个 <code>master</code> 文件
+并把<a href="https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master">配置文件</a>copy进来</p>
+
+<p>之后</p>
+
+<pre><code>sudo salt-master --log-level=all
+</code></pre>
+
+<p>成功启动master</p>
+
+<p><img src="/img/salt/start_master.png" alt="image" /></p>
+
+<p>####mininon</p>
+
+<p><code>minion</code>在centos上, 使用yum安装， 需要先添加epel源</p>
+
+<pre><code>wget -c http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+</code></pre>
+
+<p>然后直接yum安装</p>
+
+  	yum -y install salt-minion
+
+<p>接着在<code>vim /etc/salt/minion</code>编辑配置文件，暂时先打开</p>
+
+<pre><code>master: 10.0.2.2
+id: 'minion1'
+file_client: remote
+</code></pre>
+
+<p>这三项配置。<code>master</code> 指向mac的IP</p>
+
+<pre><code>/etc/init.d/salt-minion start
+</code></pre>
+
+<p>成功启动<code>minion</code></p>
+
+<p><img src="/img/salt/start_minion.png" alt="iamge" /></p>
+
+<p>####授信minion</p>
+
+<pre><code>sudo salt-key -a minion1
+
+sudo salt-key -L
+</code></pre>
+
+<p><img src="/img/salt/trust.png" alt="image" /></p>
+
+<p>####测试是否联通</p>
+
+<p>在master上执行</p>
+
+<pre><code>sudo salt '*' test.ping
+</code></pre>
+
+<p>显示</p>
+
+<p><img src="/img/salt/success.png" alt="image" /></p>
+
+<p>表示联通</p>
+
+<p>###后记</p>
+
+<p>万里长征第一步， 已经把环境搭好， 然后一点点吃透！</p>
+
+<p>###参考</p>
+
+<p><a href="http://warcraft3.blog.51cto.com/6514883/1362831">http://warcraft3.blog.51cto.com/6514883/1362831</a></p>
+
+<p><a href="https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html">https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html</a></p>
+
+<p><a href="https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master">https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master</a></p>
+
+<p><a href="http://rfyiamcool.blog.51cto.com/1030776/1262537">http://rfyiamcool.blog.51cto.com/1030776/1262537</a></p>
+
+
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/11/03/web-admin/" data-toggle="tooltip" data-placement="top" title="一些管理后台页面">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/11/13/salt-2/" data-toggle="tooltip" data-placement="top" title="自动化运维工具saltstack[二]">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
+
+<hr>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    <li>
+                        <a href="/feed.xml">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://twitter.com/jinlongwang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://www.facebook.com/jinlongwang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a href="https://github.com/jinlongwang">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; jinlongwang 2016</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/clean-blog.min.js "></script>
+
+
+</body>
+
+</html>

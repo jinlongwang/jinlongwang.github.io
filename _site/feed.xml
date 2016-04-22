@@ -1,274 +1,596 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Clean Blog</title>
-    <description>Write your site description here. It will be used as your sites meta description as well!</description>
-    <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/</link>
-    <atom:link href="http://yourdomain.com/startbootstrap-clean-blog-jekyll/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 09 Jun 2015 22:19:41 +0800</pubDate>
-    <lastBuildDate>Tue, 09 Jun 2015 22:19:41 +0800</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <title>jinlongwang</title>
+    <description>stay simlpe stay foolish</description>
+    <link>http://jinlongwang.github.io/</link>
+    <atom:link href="http://jinlongwang.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 22 Apr 2016 18:00:57 +0800</pubDate>
+    <lastBuildDate>Fri, 22 Apr 2016 18:00:57 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.3</generator>
     
       <item>
-        <title>Man must explore, and this is exploration at its greatest</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>open-falcon 技术分享会总结</title>
+        <description>&lt;h1 id=&quot;open-falcon-&quot;&gt;open-falcon 技术分享会总结&lt;/h1&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;h2 id=&quot;section&quot;&gt;滴滴出行&lt;/h2&gt;
+&lt;p&gt;滴滴出行主要介绍了&lt;code&gt;open-falcon v0.1.0&lt;/code&gt;的新特性，以及未来&lt;code&gt;open-falcon&lt;/code&gt;未来的规划&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;新特性&lt;/h3&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;graph扩容不再丢失数据&lt;/li&gt;
+  &lt;li&gt;自定义dashboard&lt;/li&gt;
+  &lt;li&gt;自定义汇报时间间隔（放到配置中）&lt;/li&gt;
+  &lt;li&gt;支持openTSDB&lt;/li&gt;
+  &lt;li&gt;适配Grafana-一个全球广泛使用的dashboard&lt;/li&gt;
+  &lt;li&gt;集群监控&lt;/li&gt;
+  &lt;li&gt;nodata监控&lt;/li&gt;
+  &lt;li&gt;文档完善&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;规划&lt;/h3&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;前端模块合并（dashboard, portal）&lt;/li&gt;
+  &lt;li&gt;权限控制&lt;/li&gt;
+  &lt;li&gt;API重新整理设计&lt;/li&gt;
+  &lt;li&gt;组合策略告警， tag反选（不等于某一条件时报警）&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;h2 id=&quot;mt-falcon&quot;&gt;美团 &lt;code&gt;mt-falcon&lt;/code&gt;&lt;/h2&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;p&gt;美团机器2w+， 监控指标5kw+，open-falcon集群100+台服务器&lt;/p&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
+&lt;ul&gt;
+  &lt;li&gt;动态服务树整合： 机器上有告警接收人， 策略中也有告警接受人，告警时取并集发送&lt;/li&gt;
+  &lt;li&gt;字符串监控（监控日志信息）&lt;/li&gt;
+  &lt;li&gt;Docker监控： 最早为宿主机监控&lt;/li&gt;
+  &lt;li&gt;告警合并： 第一条告警直接发送， 之后的告警通过提取主机组字段合并发送。机器合并，同一metric合并好做。 服务依赖直接的告警合并不好处理&lt;/li&gt;
+  &lt;li&gt;UI重构&lt;/li&gt;
+  &lt;li&gt;服务内嵌： 把汇报代码直接打入Lib包，不用安装agent&lt;/li&gt;
+  &lt;li&gt;告警屏蔽： 可以选择屏蔽主机， 策略。最多2周，2周后恢复。&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
+&lt;h3 id=&quot;section-3&quot;&gt;运维、监控的一些思考&lt;/h3&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;一切为了运维友好， 解放生产力&lt;/li&gt;
+  &lt;li&gt;open-falcon本身的日志需要更加完善&lt;/li&gt;
+  &lt;li&gt;监控的路线为： 基础监控–&amp;gt;聚合监控–&amp;gt;智能监控（定位，自愈）。 基础监控尤为重要&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
+&lt;h1 id=&quot;qa&quot;&gt;Q&amp;amp;A&lt;/h1&gt;
 
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Q: open-falcon的自监控如何处理？&lt;/p&gt;
 
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
+&lt;p&gt;A: 生产环境下很少需要运维， 因为设计上无核心down点。 有anti-eye的工具来监控每个模块&lt;/p&gt;
 
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Q: 与服务树如何对接？&lt;/p&gt;
+
+&lt;p&gt;A: 同步机器列表。open-falcon只做监控， 对于资产的对接需要开发完成。具体怎么对接的滴滴和美团都没有太详细说明&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Q:open-falcon如何去单点&lt;/p&gt;
+
+&lt;p&gt;A:美团多机房部署&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Q:graph历史数据的迁移&lt;/p&gt;
+
+&lt;p&gt;A：美团SSD，3T硬盘，定期删除数据&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Q: zibbix数据如何迁移？&lt;/p&gt;
+
+&lt;p&gt;A：数据不迁移。在zabbix和open-falcon共存阶段， 数据同时往两个地方写入&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Q: 模板的对接问题？&lt;/p&gt;
+
+&lt;p&gt;A： 模板还是open-falcon的模板， 权限自己开发&lt;/p&gt;
+
 </description>
-        <pubDate>Wed, 24 Sep 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/09/24/man-must-explore/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/09/24/man-must-explore/</guid>
+        <pubDate>Sat, 09 Apr 2016 08:01:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2016/04/09/openfalcon-summary/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2016/04/09/openfalcon-summary/</guid>
         
         
       </item>
     
       <item>
-        <title>I believe every human has a finite number of heartbeats. I don&#39;t intend to waste any of mine.</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>2015</title>
+        <description>&lt;p&gt;#新年总结&lt;/p&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;p&gt;##2015
+* 换了工作
+* 交了首付
+* 父母搬了家
+* 还是他妈的没摇上号&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;p&gt;2015不管好坏都已经过去&lt;/p&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;p&gt;##2016&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;p&gt;###技术上&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;重新看一遍计算机网络&lt;/li&gt;
+  &lt;li&gt;认真看一遍mysql核心技术&lt;/li&gt;
+  &lt;li&gt;精通salt&lt;/li&gt;
+  &lt;li&gt;用python构建一个类似salt的大型软件原型&lt;/li&gt;
+  &lt;li&gt;去了解其自动化工具&lt;/li&gt;
+  &lt;li&gt;每天坚持1小时看源码&lt;/li&gt;
+  &lt;li&gt;熟悉一种js构建工具&lt;/li&gt;
+  &lt;li&gt;…&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;p&gt;###生活上&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;春天来了， 开始坚持跑步，保持身材&lt;/li&gt;
+  &lt;li&gt;出境游&lt;/li&gt;
+  &lt;li&gt;开始还贷款&lt;/li&gt;
+  &lt;li&gt;攒钱买车&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;2016来了， 希望一切顺利&lt;/p&gt;
 </description>
-        <pubDate>Thu, 18 Sep 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/09/18/i-believe/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/09/18/i-believe/</guid>
+        <pubDate>Fri, 01 Jan 2016 08:01:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2016/01/01/new-year/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2016/01/01/new-year/</guid>
         
         
       </item>
     
       <item>
-        <title>Science has not yet mastered prophecy</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>JS组件化开发</title>
+        <description>&lt;h1 id=&quot;js-&quot;&gt;JS 组件化开发&lt;/h1&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;p&gt;转载一篇写的非常好的组件化开发&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
-
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
-
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
-
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://purplebamboo.github.io/2015/03/16/javascript-component/&quot;&gt;http://purplebamboo.github.io/2015/03/16/javascript-component/&lt;/a&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 24 Aug 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/08/24/science-has-not-yet-mastered-prophecy/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/08/24/science-has-not-yet-mastered-prophecy/</guid>
+        <pubDate>Fri, 04 Dec 2015 19:17:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/12/04/js-module/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/12/04/js-module/</guid>
         
         
       </item>
     
       <item>
-        <title>Failure is not an option</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>通过vagrant构建开发环境</title>
+        <description>&lt;h1 id=&quot;vagrant&quot;&gt;通过vagrant构建开发环境&lt;/h1&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;p&gt;之前学习&lt;code&gt;saltstack&lt;/code&gt;时，minion端实在服务器上，没有在自己的本机。使用起来非常不爽，如果想测试两台的情况就傻逼了。同事推荐了&lt;code&gt;vagrant&lt;/code&gt;
+马上用了起来，很快就搭建起了个虚拟环境并把salt安装了上去。爽歪歪。&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;h2 id=&quot;vagrant-1&quot;&gt;vagrant&lt;/h2&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;p&gt;Vagrant 是一款用来构建虚拟开发环境的工具。&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;p&gt;我的开始的理解认为和docker类似。但实际用上才知道要比docker重，封装的是VirtualBox的虚拟机。&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;h3 id=&quot;section&quot;&gt;安装&lt;/h3&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;安装VirtualBox&lt;/li&gt;
+  &lt;li&gt;安装 Vagrant&lt;/li&gt;
+  &lt;li&gt;选择下载自己的镜像（我用的是网上找的centos6.4）&lt;/li&gt;
+  &lt;li&gt;添加自己的镜像到	 Vagrant&lt;/li&gt;
+  &lt;li&gt;启动 Vagrant&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;p&gt;简单几步， 一个虚拟环境就搞定了。&lt;/p&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;问题&lt;/h3&gt;
 
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vagrantfile的理解（文档还没有细看）&lt;/li&gt;
+  &lt;li&gt;在虚拟环境中，如何连接宿主机? (现在我直接把宿主机局域网ip写入minion，没有问题)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;后记&lt;/h3&gt;
 
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
+&lt;p&gt;这样，用自己的mac就完全能模拟&lt;code&gt;saltstack&lt;/code&gt;环境&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;下一步要加快对salt的学习了。一些基本的概念在脑中已经有了理解，需要仔细看文档并实践掌握&lt;/p&gt;
 
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
+&lt;h2 id=&quot;section-3&quot;&gt;参考&lt;/h2&gt;
 
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://segmentfault.com/a/1190000000264347&quot;&gt;使用 Vagrant 打造跨平台开发环境&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://docs.vagrantup.com/v2/getting-started/boxes.html&quot;&gt;https://docs.vagrantup.com/v2/getting-started/boxes.html&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 08 Jul 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/07/08/failure-is-not-an-option/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/07/08/failure-is-not-an-option/</guid>
+        <pubDate>Wed, 18 Nov 2015 19:17:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/11/18/vagrant/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/11/18/vagrant/</guid>
         
         
       </item>
     
       <item>
-        <title>The dreams of yesterday are the hopes of today and the reality of tomorrow.</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>自动化运维工具saltstack[二]</title>
+        <description>&lt;h1 id=&quot;saltstack&quot;&gt;自动化运维工具saltstack[二]&lt;/h1&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;h2 id=&quot;section&quot;&gt;基本配置&lt;/h2&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;h3 id=&quot;state&quot;&gt;建立state树&lt;/h3&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;所谓state只是salt的一种概念，用来保存各种配置yaml的文件。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在Salt中启动一个中心state系统，需要首先确保已经建立了Salt文件服务. 编辑master配置文件(file_roots) 取消如下行的注释&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  file_roots:
+		base:
+  		- /srv/salt
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;创建/srv/salt文件夹， 在里面创建&lt;code&gt;top.sls&lt;/code&gt; 写入&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+    &lt;pre&gt;&lt;code&gt;  base:
+      &#39;*&#39;:
+       - webserver
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;在同一位置穿件&lt;code&gt;webserver.sls&lt;/code&gt; 写入&lt;/p&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+    &lt;pre&gt;&lt;code&gt;  redis:
+      pkg:
+       - installed
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+    &lt;p&gt;这里我们仅仅测试一个简单的安装redis命令&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;执行 &lt;code&gt;sudo salt &#39;*&#39; state.highstate&lt;/code&gt;	
+这个命令相当于把配置推到minion上去！&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
-
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
-
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
-
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
-
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
-
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Tue, 01 Jul 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/07/01/dreams/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/07/01/dreams/</guid>
+        <pubDate>Fri, 13 Nov 2015 15:42:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/11/13/salt-2/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/11/13/salt-2/</guid>
         
         
       </item>
     
       <item>
-        <title>Dinosaurs are extinct today</title>
-        <description>&lt;p&gt;Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman&#39;s earth, if free men make it, will be truly round: a globe in practice, not in theory.&lt;/p&gt;
+        <title>自动化运维工具saltstack[一]</title>
+        <description>&lt;h1 id=&quot;saltstack&quot;&gt;自动化运维工具saltstack[一]&lt;/h1&gt;
 
-&lt;p&gt;Science cuts two ways, of course; its products can be used for both good and evil. But there&#39;s no turning back from science. The early warnings about technological dangers also come from science.&lt;/p&gt;
+&lt;p&gt;今年的工作已经转向了运维开发， 这是一个全新的领域，也是一个对自己的心得挑战。之前都是东搞西搞，一直也没有专注过某一块东西，总感觉这个下去对自己并不有利。希望通过1-2年时间，在这个运维开发的领域能够沉淀一些自己东西。处理自己工作的时间， 空余时间也要多研究一些之前没有接触过的东西&lt;/p&gt;
 
-&lt;p&gt;What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.&lt;/p&gt;
+&lt;h2 id=&quot;saltstack-1&quot;&gt;saltstack简介&lt;/h2&gt;
 
-&lt;p&gt;A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That&#39;s how I felt seeing the Earth for the first time. I could not help but love and cherish her.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;saltstack&lt;/code&gt;是一个自动化运维工具， &lt;a href=&quot;https://docs.saltstack.com&quot;&gt;文档见这里&lt;/a&gt;或者见&lt;a href=&quot;http://docs.saltstack.cn/zh_CN/latest/topics/installation/index.html#quick-install&quot;&gt;中文文档&lt;/a&gt;。&lt;/p&gt;
 
-&lt;p&gt;For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.&lt;/p&gt;
+&lt;p&gt;对我来说为什么选择学习&lt;code&gt;saltstack&lt;/code&gt;？&lt;/p&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;The Final Frontier&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;saltstack&lt;/code&gt;是一个比较先进的自动化运维工具，要比puppet,chef等工具晚出来，觉得以后肯定要比puppet等使用更加广泛。同样的工具还有&lt;code&gt;ansible&lt;/code&gt;，如果以后有可能我也要看一下。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;code&gt;saltstack&lt;/code&gt; 使用python语言编写， 自己本身对python比较熟悉，而且也是从工作以来一直使用的语言。以后研究 salt源码或是拓展第三方模块的时候应该会更顺手&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;h2 id=&quot;saltstack-2&quot;&gt;saltstack起步&lt;/h2&gt;
 
-&lt;p&gt;There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.&lt;/p&gt;
+&lt;h3 id=&quot;section&quot;&gt;环境介绍&lt;/h3&gt;
 
-&lt;blockquote&gt;The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.&lt;/blockquote&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;master使用自己的mac&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;minion使用一台测试服务器centos&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.&lt;/p&gt;
+&lt;h3 id=&quot;section-1&quot;&gt;安装&lt;/h3&gt;
 
-&lt;h2 class=&quot;section-heading&quot;&gt;Reaching for the Stars&lt;/h2&gt;
+&lt;p&gt;####master&lt;/p&gt;
 
-&lt;p&gt;As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.&lt;/p&gt;
+&lt;p&gt;python， pip这些都很熟悉了，直接就可以安装好。在我mac上安装的时候没有遇到问题，如果有根据报错google一下，应该没什么问题&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;#&quot;&gt;
-    &lt;img src=&quot;/startbootstrap-clean-blog-jekyll/img/post-sample-image.jpg&quot; alt=&quot;Post Sample Image&quot; /&gt;
-&lt;/a&gt;
-&lt;span class=&quot;caption text-muted&quot;&gt;To go places and do things that have never been done before – that’s what living is all about.&lt;/span&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pip install salt
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.&lt;/p&gt;
+&lt;p&gt;安装完成之后需要在 &lt;code&gt;/etc/salt/&lt;/code&gt; 下新建一个 &lt;code&gt;master&lt;/code&gt; 文件
+并把&lt;a href=&quot;https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master&quot;&gt;配置文件&lt;/a&gt;copy进来&lt;/p&gt;
 
-&lt;p&gt;As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.&lt;/p&gt;
+&lt;p&gt;之后&lt;/p&gt;
 
-&lt;p&gt;Placeholder text by &lt;a href=&quot;http://spaceipsum.com/&quot;&gt;Space Ipsum&lt;/a&gt;. Photographs by &lt;a href=&quot;https://www.flickr.com/photos/nasacommons/&quot;&gt;NASA on The Commons&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo salt-master --log-level=all
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功启动master&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/salt/start_master.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;####mininon&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;minion&lt;/code&gt;在centos上, 使用yum安装， 需要先添加epel源&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget -c http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
+rpm -ivh epel-release-6-8.noarch.rpm
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后直接yum安装&lt;/p&gt;
+
+  	yum -y install salt-minion
+
+&lt;p&gt;接着在&lt;code&gt;vim /etc/salt/minion&lt;/code&gt;编辑配置文件，暂时先打开&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;master: 10.0.2.2
+id: &#39;minion1&#39;
+file_client: remote
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这三项配置。&lt;code&gt;master&lt;/code&gt; 指向mac的IP&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/etc/init.d/salt-minion start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;成功启动&lt;code&gt;minion&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/salt/start_minion.png&quot; alt=&quot;iamge&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;####授信minion&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo salt-key -a minion1
+
+sudo salt-key -L
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/salt/trust.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;####测试是否联通&lt;/p&gt;
+
+&lt;p&gt;在master上执行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo salt &#39;*&#39; test.ping
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;显示&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/salt/success.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;表示联通&lt;/p&gt;
+
+&lt;p&gt;###后记&lt;/p&gt;
+
+&lt;p&gt;万里长征第一步， 已经把环境搭好， 然后一点点吃透！&lt;/p&gt;
+
+&lt;p&gt;###参考&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://warcraft3.blog.51cto.com/6514883/1362831&quot;&gt;http://warcraft3.blog.51cto.com/6514883/1362831&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html&quot;&gt;https://docs.saltstack.com/en/latest/topics/tutorials/walkthrough_macosx.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master&quot;&gt;https://docs.saltstack.com/en/latest/ref/configuration/examples.html#configuration-examples-master&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://rfyiamcool.blog.51cto.com/1030776/1262537&quot;&gt;http://rfyiamcool.blog.51cto.com/1030776/1262537&lt;/a&gt;&lt;/p&gt;
+
 </description>
-        <pubDate>Tue, 10 Jun 2014 20:00:00 +0800</pubDate>
-        <link>http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/06/10/dinosaurs/</link>
-        <guid isPermaLink="true">http://yourdomain.com/startbootstrap-clean-blog-jekyll/2014/06/10/dinosaurs/</guid>
+        <pubDate>Fri, 06 Nov 2015 15:42:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/11/06/saltstack-1/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/11/06/saltstack-1/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>一些管理后台页面</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;一些管理后台页面&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有赞商城&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/yz1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/yz2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/yz3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;孔明社交&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/km1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/km2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;微信公众平台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx1.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx2.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx3.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx4.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx5.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx6.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx7.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx8.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx9.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx10.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/wx/wx11.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 03 Nov 2015 15:42:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/11/03/web-admin/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/11/03/web-admin/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>分治法</title>
+        <description>&lt;p&gt;昨天做leetcode的一道题，用到了分治法。感觉和快速排序一个
+意思，把这两个题目放在一起看一下。&lt;/p&gt;
+
+&lt;p&gt;只要在了解一下递归的执行逻辑。&lt;/p&gt;
+
+&lt;p&gt;Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.&lt;/p&gt;
+
+&lt;p&gt;Example 1
+Input: “2-1-1”.&lt;/p&gt;
+
+&lt;p&gt;((2-1)-1) = 0
+(2-(1-1)) = 2
+Output: [0, 2]&lt;/p&gt;
+
+&lt;p&gt;Example 2
+Input: “2&lt;em&gt;3-4&lt;/em&gt;5”&lt;/p&gt;
+
+&lt;p&gt;(2&lt;em&gt;(3-(4&lt;/em&gt;5))) = -34
+((2&lt;em&gt;3)-(4&lt;/em&gt;5)) = -14
+((2&lt;em&gt;(3-4))&lt;/em&gt;5) = -10
+(2&lt;em&gt;((3-4)&lt;/em&gt;5)) = -10
+(((2&lt;em&gt;3)-4)&lt;/em&gt;5) = 10
+Output: [-34, -14, -10, -10, 10]&lt;/p&gt;
+
+&lt;p&gt;解法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class Solution:
+# @param {string} input
+# @return {integer[]}
+def diffWaysToCompute(self, input):
+  res = []
+  for i,val in enumerate(input):
+      if val==&quot;*&quot; or val == &quot;-&quot; or val == &quot;+&quot;:
+          left = self.diffWaysToCompute(input[0:i])
+          right = self.diffWaysToCompute(input[i+1:])
+          for j, jv in enumerate(left):
+              for k, kv in enumerate(right):
+                  if val == &quot;+&quot;:
+                      res.append(jv+kv)
+                  if val == &quot;-&quot;:
+                      res.append(jv-kv)
+                  if val == &quot;*&quot;:
+                      res.append(jv*kv)
+  if not res:
+      res.append(int(input))
+  return res
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        <pubDate>Tue, 04 Aug 2015 18:30:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/08/04/fenzhi/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/08/04/fenzhi/</guid>
+        
+        <category>算法</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>惨不忍睹</title>
+        <description>&lt;h1 id=&quot;section&quot;&gt;被虐&lt;/h1&gt;
+&lt;p&gt;优酷面试，也不算被虐吧，还是表现不够好，基本功不够扎实。
+算法真特么让人头疼，项目聊得再好也没用。平时的东西研究的不够深入。
+但是今天的聊天让我知道了：
+热爱技术就要深入研究，做不了大项目也要往大项目的架构上去考虑，平时还是想的东西太少了。
+比如工业级的rabbitmq的设计好考虑那些问题等等。算了，再出发吧，我就不信了。&lt;/p&gt;
+
+&lt;p&gt;今天遇到的技术问题总结：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ip转int&lt;/li&gt;
+  &lt;li&gt;python 修饰器传参数&lt;/li&gt;
+  &lt;li&gt;二叉树任意两点最短路径&lt;/li&gt;
+  &lt;li&gt;按库存比例返回商品&lt;/li&gt;
+  &lt;li&gt;找到K个最小数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = &#39;jinlongwang&#39;;
+
+    /* * * DON&#39;T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement(&#39;script&#39;); dsq.type = &#39;text/javascript&#39;; dsq.async = true;
+        dsq.src = &#39;//&#39; + disqus_shortname + &#39;.disqus.com/embed.js&#39;;
+        (document.getElementsByTagName(&#39;head&#39;)[0] || document.getElementsByTagName(&#39;body&#39;)[0]).appendChild(dsq);
+    })();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+</description>
+        <pubDate>Thu, 16 Jul 2015 07:04:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/07/16/interview/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/07/16/interview/</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>写一个用来去掉知乎样式的chrome插件</title>
+        <description>&lt;h1 id=&quot;chrome&quot;&gt;最简单的chrome插件&lt;/h1&gt;
+&lt;p&gt;###manifest.json
+最主要的配置文件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    {
+    &quot;name&quot;: &quot;clearZhihuCss&quot;,
+    &quot;version&quot;: &quot;1.0&quot;,
+    &quot;description&quot;: &quot;nobody can see what i&#39;m look for&quot;,
+    &quot;permissions&quot;: [
+    &quot;tabs&quot;, &quot;http://*/*&quot;, &quot;https://*/*&quot;
+    ],
+    &quot;browser_action&quot;: {
+      &quot;default_title&quot;: &quot;clear css&quot;,
+      &quot;default_icon&quot;: &quot;icon.png&quot;,
+      &quot;default_popup&quot;: &quot;popup.html&quot;
+    },
+    &quot;content_scripts&quot;: [
+    {
+      &quot;matches&quot;: [&quot;http://*/*&quot;, &quot;https://*/*&quot;],
+      &quot;js&quot;: [&quot;jquery-1.11.2.js&quot;,&quot;content.js&quot;]
+    }
+    ],
+    &quot;manifest_version&quot;: 2
+    }
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;content_scripts中的脚本可以用于操作页面的dom&lt;/p&gt;
+</description>
+        <pubDate>Mon, 06 Jul 2015 08:04:00 +0800</pubDate>
+        <link>http://jinlongwang.github.io/2015/07/06/chrome-plug-in/</link>
+        <guid isPermaLink="true">http://jinlongwang.github.io/2015/07/06/chrome-plug-in/</guid>
+        
+        <category>chrome plugin</category>
         
         
       </item>

@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>关于Oauth和开放平台的设计与实现 - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/06/12/oauth/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,103 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-03.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>关于Oauth和开放平台的设计与实现</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on June 12, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<p>####参考文章
+* <a href="http://zhuanlan.zhihu.com/prattle/20034107">撰写合格的REST API</a>
+* <a href="http://tech.shift.com/post/39516330935/implementing-a-python-oauth-2-0-provider-part-1">Implementing a Python OAuth 2.0 Provider</a>
+* <a href="http://www.cnblogs.com/weidagang2046/archive/2011/06/04/idempotence.html">理解HTTP幂等性</a></p>
+
+<p>####整体架构
+* 整体使用pyoauth2 这个库，具体使用方法见参考文章2.
+  通过阅读这个库的源码，学会了python也可以实现类似java的
+  抽象类
+  example：</p>
+
+<pre><code>  class Interface(object):
+    def __init__(self):
+        pass
+
+    def toImpl(self):
+        raise NotImplementedError("must has a sub class")
+
+  class Sub(Interface):
+    def toImpl(self):
+        print 'impl ok!'
+
+  if __name__ == "__main__":
+    b = Sub()
+    b.toImpl()
+</code></pre>
+
+<ul>
+  <li>
+    <p>需要持久化4张数据表，参考文章中使用了redis，但是我认为在实践中这些数据
+还是需要持久化的数据库中的。
+<img src="/img/table.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>做到使用标准的RESTful接口</p>
+  </li>
+</ul>
+
+<p>####Oauth的安全型设计和接口的验证设计
+TO BE CONTINUE…</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/06/11/tree-program/" data-toggle="tooltip" data-placement="top" title="关于二叉树的算法题目">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/06/15/color/" data-toggle="tooltip" data-placement="top" title="按数据比例改变颜色的算法">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

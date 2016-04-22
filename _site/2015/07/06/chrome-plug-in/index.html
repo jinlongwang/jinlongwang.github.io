@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>写一个用来去掉知乎样式的chrome插件 - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/07/06/chrome-plug-in/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,75 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-02.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>写一个用来去掉知乎样式的chrome插件</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on July 6, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<h1 id="chrome">最简单的chrome插件</h1>
+<p>###manifest.json
+最主要的配置文件</p>
+
+<pre><code>    {
+    "name": "clearZhihuCss",
+    "version": "1.0",
+    "description": "nobody can see what i'm look for",
+    "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+    ],
+    "browser_action": {
+      "default_title": "clear css",
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["jquery-1.11.2.js","content.js"]
+    }
+    ],
+    "manifest_version": 2
+    }
+</code></pre>
+
+<p>content_scripts中的脚本可以用于操作页面的dom</p>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/07/03/qq-red-point/" data-toggle="tooltip" data-placement="top" title="'一键下班' or '水滴下拉刷新'？">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/07/16/interview/" data-toggle="tooltip" data-placement="top" title="惨不忍睹">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

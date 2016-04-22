@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>分治法 - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/08/04/fenzhi/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,95 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-04.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>分治法</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on August 4, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<p>昨天做leetcode的一道题，用到了分治法。感觉和快速排序一个
+意思，把这两个题目放在一起看一下。</p>
+
+<p>只要在了解一下递归的执行逻辑。</p>
+
+<p>Given a string of numbers and operators, return all possible results from computing all the different possible ways to group numbers and operators. The valid operators are +, - and *.</p>
+
+<p>Example 1
+Input: “2-1-1”.</p>
+
+<p>((2-1)-1) = 0
+(2-(1-1)) = 2
+Output: [0, 2]</p>
+
+<p>Example 2
+Input: “2<em>3-4</em>5”</p>
+
+<p>(2<em>(3-(4</em>5))) = -34
+((2<em>3)-(4</em>5)) = -14
+((2<em>(3-4))</em>5) = -10
+(2<em>((3-4)</em>5)) = -10
+(((2<em>3)-4)</em>5) = 10
+Output: [-34, -14, -10, -10, 10]</p>
+
+<p>解法:</p>
+
+<pre><code>class Solution:
+# @param {string} input
+# @return {integer[]}
+def diffWaysToCompute(self, input):
+  res = []
+  for i,val in enumerate(input):
+      if val=="*" or val == "-" or val == "+":
+          left = self.diffWaysToCompute(input[0:i])
+          right = self.diffWaysToCompute(input[i+1:])
+          for j, jv in enumerate(left):
+              for k, kv in enumerate(right):
+                  if val == "+":
+                      res.append(jv+kv)
+                  if val == "-":
+                      res.append(jv-kv)
+                  if val == "*":
+                      res.append(jv*kv)
+  if not res:
+      res.append(int(input))
+  return res
+</code></pre>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/07/16/interview/" data-toggle="tooltip" data-placement="top" title="惨不忍睹">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/11/03/web-admin/" data-toggle="tooltip" data-placement="top" title="一些管理后台页面">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

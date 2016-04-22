@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>按数据比例改变颜色的算法 - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/06/15/color/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,98 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-05.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>按数据比例改变颜色的算法</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on June 15, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<p>事情是这样，当我看到<a href="http://wap.thejoyrun.com/po_827117_4565880.html">悦跑圈分享链接</a>时，地图中路线根据速度改变画线的颜色时，顿时眼前一亮。
+<img src="/img/share.png" alt="Image" /></p>
+
+<p>其实想一下这个算法还是比较清晰的，只需根据不同的速度来调整RGB的值即可。</p>
+
+<pre><code>function Color(Speed) {
+    var result = "rgb(0,0,0)", difference;
+    if (Speed &lt; AMinSpeed) { result = "rgb(255,0,0)"; }
+    if (AMinSpeed&lt;=Speed &amp;&amp; Speed &lt;=AverSpeed) {
+        difference = parseInt(255 - (AverSpeed - Speed) / (AverSpeed - AMinSpeed) * 255);
+        result = "rgb(255," + difference + ",0)";
+    };
+    if (Speed &gt; AMaxSpeed) { result = "rgb(0,255,0)"; };
+    if (AverSpeed&lt;=Speed &amp;&amp; Speed &lt;=AMaxSpeed) {
+        difference = parseInt(255 - (Speed - AverSpeed) / (AMaxSpeed - AverSpeed) * 255);
+        result = "rgb(" + difference + ",255,0)";
+    };
+    return result;
+};
+</code></pre>
+
+<p>大概总结公式就是：</p>
+
+<pre><code>  avg = 平均值
+  max = 最大值
+  min = 最小值
+  c = 常数
+  x = 当前变量
+  if x &gt; avg:
+    res = c-(x-avg)/(max-avg)*c
+  if x &lt; avg:
+    res = c-(avg-x)/(avg-min)*c
+</code></pre>
+
+<p>这个公式似曾相识，可惜我数学已经还给了老师。</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/06/12/oauth/" data-toggle="tooltip" data-placement="top" title="关于Oauth和开放平台的设计与实现">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/06/15/flip-tree/" data-toggle="tooltip" data-placement="top" title="凑个热闹，翻转二叉树">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

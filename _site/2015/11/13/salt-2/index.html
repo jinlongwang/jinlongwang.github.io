@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>自动化运维工具saltstack[二] - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/11/13/salt-2/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,90 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-05.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>自动化运维工具saltstack[二]</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on November 13, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<h1 id="saltstack">自动化运维工具saltstack[二]</h1>
+
+<h2 id="section">基本配置</h2>
+
+<h3 id="state">建立state树</h3>
+
+<ul>
+  <li>
+    <p>所谓state只是salt的一种概念，用来保存各种配置yaml的文件。</p>
+  </li>
+  <li>
+    <p>在Salt中启动一个中心state系统，需要首先确保已经建立了Salt文件服务. 编辑master配置文件(file_roots) 取消如下行的注释</p>
+
+    <pre><code>  file_roots:
+		base:
+  		- /srv/salt
+</code></pre>
+  </li>
+  <li>
+    <p>创建/srv/salt文件夹， 在里面创建<code>top.sls</code> 写入</p>
+
+    <pre><code>  base:
+      '*':
+       - webserver
+</code></pre>
+  </li>
+  <li>
+    <p>在同一位置穿件<code>webserver.sls</code> 写入</p>
+
+    <pre><code>  redis:
+      pkg:
+       - installed
+</code></pre>
+
+    <p>这里我们仅仅测试一个简单的安装redis命令</p>
+  </li>
+  <li>
+    <p>执行 <code>sudo salt '*' state.highstate</code>	
+这个命令相当于把配置推到minion上去！</p>
+  </li>
+</ul>
 
 
-		</div>
-	</div>
-</div>
+
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/11/06/saltstack-1/" data-toggle="tooltip" data-placement="top" title="自动化运维工具saltstack[一]">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/11/18/vagrant/" data-toggle="tooltip" data-placement="top" title="通过vagrant构建开发环境">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 

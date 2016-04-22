@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="stay simlpe stay foolish">
 
-    <title>jinlongwang</title>
+    <title>'一键下班' or '水滴下拉刷新'？ - jinlongwang</title>
 
-    <link rel="canonical" href="http://jinlongwang.github.io/">
+    <link rel="canonical" href="http://jinlongwang.github.io/2015/07/03/qq-red-point/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -75,33 +75,147 @@
 </nav>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Post Header -->
+<header class="intro-header" style="background-image: url('/img/post-bg-01.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="site-heading">
-                    <h1>jinlongwang</h1>
-                    <hr class="small">
-                    <span class="subheading">关于工作， 生活，学习的一些记录</span>
+                <div class="post-heading">
+                    <h1>'一键下班' or '水滴下拉刷新'？</h1>
+                    
+                    <span class="meta">Posted by jinlongwang on July 3, 2015</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-			
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-<!-- Pager -->
+				<p>##参考文章
+* <a href="http://www.alloyteam.com/2015/06/shi-yong-web-mo-ni-shou-q-shui-di-xia-la-shua-xin-xiao-guo/">转载自AlloyTeam:使用web模拟手Q水滴下拉刷新效果</a>
+* <a href="http://www.zhihu.com/question/26382740">手机 QQ 的一键消除红点功能是怎么想出来的？</a></p>
+
+<p>##思路</p>
+
+<p>####静态实现</p>
+
+<p><img src="/img/qq.png" alt="image" />
+  按照参考文章1中所述， 准备使用canvas实现。
+  画两个圆加上两条贝塞尔曲线，来实现图中效果。</p>
+
+<p>#####两个圆形</p>
+
+<p>canvas画圆形:</p>
+
+<pre><code>  context.arc(x,y,r,sAngle,eAngle,counterclockwise);
+</code></pre>
+
+<ol>
+  <li>x: 圆的中心的 x 坐标。</li>
+  <li>y: 圆的中心的 y 坐标。</li>
+  <li>r: 圆的半径。</li>
+  <li>sAngle:起始角，以弧度计。（弧的圆形的三点钟位置是 0 度）。</li>
+  <li>eAngle:结束角，以弧度计。</li>
+  <li>counterclockwise: 可选。规定应该逆时针还是顺时针绘图。False = 顺时针，true = 逆时针。</li>
+</ol>
+
+<p><img src="/img/arc.png" alt="image" /></p>
+
+<p>#####弧线</p>
+
+<p>画贝塞尔曲线：</p>
+
+<pre><code>  context.quadraticCurveTo(cpx,cpy,x,y);   其实就三个主要要素：
+</code></pre>
+
+<ol>
+  <li>开始点</li>
+  <li>控制点</li>
+  <li>结束点</li>
+</ol>
+
+<p>#####坑</p>
+
+<p>遇到的最大的坑没想到居然是如何填充画完之后的图。
+  最后的解决办法，一定要保证起始点和结束点重合，这样，
+  closepath之后，在fill()就能出现我想要的！</p>
+
+<p>#####代码和效果</p>
+
+<pre><code>function draw(){
+  var canvas=document.getElementById('canvas');
+  var context=canvas.getContext('2d');
+  context.fillStyle="#FF0000";
+  context.strokeStyle = "red";
+  //开始画图
+  context.beginPath();
+
+  //画第一条曲线
+  context.moveTo(40,40);
+  context.quadraticCurveTo(60,60,50,80);
+
+  //底下的半圆
+  context.arc(60,80,10, Math.PI, 0,true);
+
+  //第二条曲线
+  context.moveTo(70,80);
+  context.quadraticCurveTo(60,60,80,40);
+  //上圆
+  context.arc(60,40,20, 0,Math.PI, true); //Math.PI*2是JS计算方法，是圆
+
+  //填充
+  context.closePath();
+  context.stroke();
+  context.fill();
+}
+</code></pre>
+
+<p><img src="/img/one.png" alt="image" />
+<img src="/img/two.png" alt="image" /></p>
+
+<p>####Please 动起来！！
+今天有点晚，明天再搞！！！</p>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jinlongwang';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 
 
-		</div>
-	</div>
-</div>
+                <hr>
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2015/06/25/tencent/" data-toggle="tooltip" data-placement="top" title="腾讯的一道面试题">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2015/07/06/chrome-plug-in/" data-toggle="tooltip" data-placement="top" title="写一个用来去掉知乎样式的chrome插件">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</article>
 
 <hr>
 
