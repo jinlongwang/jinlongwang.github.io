@@ -19,42 +19,46 @@ header-img: "img/post-bg-01.jpg"
 	关键方法是`as_view()`。
 
 2. `as_view()` 源码
-	 	`as_view()`方法实际是个闭包， 返回了一个处理函数， 把class view 变成了function view， 源码如下：
- 		
- 		def as_view(cls, **initkwargs):
-        """
-        Main entry point for a request-response process.
-        """
-        for key in initkwargs:
-            if key in cls.http_method_names:
-                raise TypeError("You tried to pass in the %s method name as a "
-                                "keyword argument to %s(). Don't do that."
-                                % (key, cls.__name__))
-            if not hasattr(cls, key):
-                raise TypeError("%s() received an invalid keyword %r. as_view "
-                                "only accepts arguments that are already "
-                                "attributes of the class." % (cls.__name__, key))
-
-        def view(request, *args, **kwargs):
-            self = cls(**initkwargs)
-            if hasattr(self, 'get') and not hasattr(self, 'head'):
-                self.head = self.get
-            self.request = request
-            self.args = args
-            self.kwargs = kwargs
-            return self.dispatch(request, *args, **kwargs)
-        view.view_class = cls
-        view.view_initkwargs = initkwargs
-
-        # take name and docstring from class
-        update_wrapper(view, cls, updated=())
-
-        # and possible attributes set by decorators
-        # like csrf_exempt from dispatch
-        update_wrapper(view, cls.dispatch, assigned=())
-        return view
-        
-还可以看到， 方法中实际调用了`self.dispatch(request, *args, **kwargs)`
+	
+	`as_view()`方法实际是个闭包， 返回了一个处理函数， 把class view 变成了function view， 源码如下：
+	
+	```python
+	
+	    @classonlymethod
+	    def as_view(cls, **initkwargs):
+	        """
+	        Main entry point for a request-response process.
+	        """
+	        for key in initkwargs:
+	            if key in cls.http_method_names:
+	                raise TypeError("You tried to pass in the %s method name as a "
+	                                "keyword argument to %s(). Don't do that."
+	                                % (key, cls.__name__))
+	            if not hasattr(cls, key):
+	                raise TypeError("%s() received an invalid keyword %r. as_view "
+	                                "only accepts arguments that are already "
+	                                "attributes of the class." % (cls.__name__, key))
+	
+	        def view(request, *args, **kwargs):
+	            self = cls(**initkwargs)
+	            if hasattr(self, 'get') and not hasattr(self, 'head'):
+	                self.head = self.get
+	            self.request = request
+	            self.args = args
+	            self.kwargs = kwargs
+	            return self.dispatch(request, *args, **kwargs)
+	        view.view_class = cls
+	        view.view_initkwargs = initkwargs
+	
+	        # take name and docstring from class
+	        update_wrapper(view, cls, updated=())
+	
+	        # and possible attributes set by decorators
+	        # like csrf_exempt from dispatch
+	        update_wrapper(view, cls.dispatch, assigned=())
+	        return view
+	```        
+	还可以看到， 方法中实际调用了`self.dispatch(request, *args, **kwargs)`
 
 3. `self.dispatch`做了什么？
     直接看`dispatch`代码
