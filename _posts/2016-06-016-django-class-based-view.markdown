@@ -22,6 +22,7 @@ header-img: "img/post-bg-01.jpg"
 	 	`as_view()`方法实际是个闭包， 返回了一个处理函数， 把class view 变成了function view， 源码如下：
  		
  	```python
+ 		
  		def as_view(cls, **initkwargs):
         """
         Main entry point for a request-response process.
@@ -54,6 +55,7 @@ header-img: "img/post-bg-01.jpg"
         # like csrf_exempt from dispatch
         update_wrapper(view, cls.dispatch, assigned=())
         return view
+
 ```
 还可以看到， 方法中实际调用了`self.dispatch(request, *args, **kwargs)`
 
@@ -61,6 +63,7 @@ header-img: "img/post-bg-01.jpg"
     直接看`dispatch`代码
     
     ```python
+    
     def dispatch(self, request, *args, **kwargs):
         # Try to dispatch to the right method; if a method doesn't exist,
         # defer to the error handler. Also defer to the error handler if the
@@ -70,6 +73,7 @@ header-img: "img/post-bg-01.jpg"
         else:
             handler = self.http_method_not_allowed
         return handler(request, *args, **kwargs)
+    
     ```
     
     通过`getattr`方法动态调用对应的method， 如`get`, `post`等
