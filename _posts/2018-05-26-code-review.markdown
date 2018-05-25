@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "git flow"
+title:      "如何提高代码质量"
 date:       2018-05-26 23:00:00
 author:     "jinlongwang"
 header-img: "img/post-bg-03.jpg"
