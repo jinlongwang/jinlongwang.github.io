@@ -35,7 +35,7 @@ tag: "ops"
 
 `./influxd`
 
-## 下节将从influd这个包开始看代码
+## 下节将从influxd这个包开始看代码
 
 
 
