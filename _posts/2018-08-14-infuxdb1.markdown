@@ -1,0 +1,45 @@
+---
+layout:     post
+title:      "inlfuxdb源码分析（一）"
+date:       2018-08-14 18:45:00
+author:     "jinlongwang"
+header-img: "img/post-bg-01.jpg"
+tag: "ops"
+---
+# inlfuxdb源码分析（一）
+## 介绍
+不多说了， 需要对时序数据有了解参考
+
+- [官网](https://www.influxdata.com/time-series-platform/influxdb/)
+
+## 源码编译
+
+### clone代码
+从github上clone代码到本地`$GOPATH/influxdata/influxdb`
+
+### 安装依赖
+`cd $GOPATH/influxdata/influxdb`
+
+`go get ./...`
+
+安装过程中你会发现有问题， 我在master分支和1.4，1.5版本始终没有解决，
+1.3版本下编译通过。需要根据`Godeps`文件下的库文件的`comment id`来切换自己库的相关依赖
+
+### 编译influxd
+
+`cd $GOPATH/influxdata/influxdb/cmd/influxd/`
+
+`go build`
+
+### 启动可执行文件
+
+`./influxd`
+
+## 下节将从influd这个包开始看代码
+
+
+
+
+
+
+
